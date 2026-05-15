@@ -170,4 +170,5 @@ export const clinic = {
 
 export const serviceTitles = clinic.services.map((s) => s.title);
 
-export const logoUrl = `${import.meta.env.BASE_URL}logo.png`;
+/** Marca com fundo transparente (`public/logofundoremovido.png`). */
+export const logoUrl = `${import.meta.env.BASE_URL}logofundoremovido.png`;
