@@ -59,3 +59,6 @@ export const clinic = {
 };
 
 export const serviceTitles = clinic.services.map((s) => s.title);
+
+/** Público: `public/logo.png` (funciona com `base` do GitHub Pages). */
+export const logoUrl = `${import.meta.env.BASE_URL}logo.png`;

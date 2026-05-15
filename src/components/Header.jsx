@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { clinic } from "../data/clinic.js";
+import Logo from "./Logo.jsx";
 
 const nav = [
   { label: "Início", href: "#inicio" },
@@ -37,15 +38,9 @@ export default function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:h-[4.25rem] sm:px-6 lg:px-8">
         <a
           href="#inicio"
-          className="group flex min-w-0 items-center gap-2.5 rounded-xl outline-none ring-nexus-500/40 focus-visible:ring-2"
+          className="group flex min-w-0 max-w-[min(100%,18rem)] items-center gap-2 rounded-xl outline-none ring-nexus-500/40 focus-visible:ring-2 sm:max-w-none"
         >
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-nexus-800 to-nexus-900 text-sm font-bold text-white shadow-lg shadow-nexus-900/25 ring-1 ring-white/10">
-            N
-          </span>
-          <span className="min-w-0 font-display text-base font-semibold tracking-tight text-ink sm:text-lg">
-            <span className="hidden sm:inline">{clinic.name}</span>
-            <span className="sm:hidden">NEXUS</span>
-          </span>
+          <Logo variant="header" />
         </a>
 
         <nav className="hidden items-center gap-1 md:flex">

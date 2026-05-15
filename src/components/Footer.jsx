@@ -1,15 +1,14 @@
 import { clinic } from "../data/clinic.js";
+import Logo from "./Logo.jsx";
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer id="site-footer" className="border-t border-slate-200 bg-white py-12">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-        <div className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-nexus-800 to-nexus-900 text-sm font-bold text-white">
-            N
-          </span>
-          <div>
+        <div className="flex items-start gap-3 sm:items-center">
+          <Logo variant="footer" />
+          <div className="min-w-0">
             <p className="font-display text-base font-semibold text-ink">
               {clinic.name}
             </p>
