@@ -10,7 +10,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative isolate overflow-hidden bg-surface pb-20 pt-28 sm:pb-28 sm:pt-32 lg:pb-32 lg:pt-36"
+      className="relative isolate overflow-hidden bg-section-hero pb-20 pt-28 sm:pb-28 sm:pt-32 lg:pb-32 lg:pt-36"
     >
       <div
         className="pointer-events-none absolute -left-40 top-0 h-[420px] w-[420px] rounded-full bg-nexus-400/25 blur-3xl"
@@ -32,14 +32,14 @@ export default function Hero() {
             {clinic.name} · {clinic.tagline}
           </p>
           <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ink text-balance sm:text-5xl lg:text-6xl">
-            Cuide de você por inteiro —{" "}
+            Cuide de você por inteiro:{" "}
             <span className="bg-linear-to-r from-nexus-700 via-nexus-500 to-sky-500 bg-clip-text text-transparent">
               saúde, estética e movimento
             </span>
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-muted sm:text-xl">
-            {clinic.scheduleCta} Equipe multidisciplinar e serviços que vão do
-            clínico geral à performance no CrossFit.
+            {clinic.scheduleCta} Contamos com equipe multidisciplinar e
+            serviços que vão do clínico geral à performance no CrossFit.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
@@ -108,7 +108,15 @@ export default function Hero() {
                 <p className="mt-2 font-display text-2xl font-semibold tracking-tight">
                   Na {clinic.name.replace("Clínica ", "")}
                 </p>
-                <ul className="mt-6 space-y-3 text-sm text-nexus-50/95">
+                <div className="mt-4 rounded-xl bg-white/5 px-3 py-2.5 ring-1 ring-white/10">
+                  <p className="text-xs font-semibold text-nexus-100">
+                    {clinic.tagline}
+                  </p>
+                  <p className="mt-1 text-[11px] leading-relaxed text-nexus-200/95 sm:text-xs">
+                    Oito serviços, da saúde mental ao treino funcional.
+                  </p>
+                </div>
+                <ul className="mt-5 space-y-3 text-sm text-nexus-50/95">
                   {spotlight.map((s, i) => (
                     <li
                       key={s.title}
@@ -118,7 +126,9 @@ export default function Hero() {
                           : "bg-white/5 ring-white/5"
                       }`}
                     >
-                      <span>{s.title}</span>
+                      <span className="min-w-0 flex-1 text-left leading-snug">
+                        {s.title}
+                      </span>
                       <span
                         className={
                           i === 0
@@ -135,17 +145,11 @@ export default function Hero() {
                   href={clinic.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 flex w-full items-center justify-center rounded-xl bg-white py-3 text-sm font-semibold text-nexus-900 transition hover:bg-nexus-50"
+                  className="mt-6 flex w-full items-center justify-center rounded-xl bg-white px-4 py-3.5 text-sm font-semibold text-nexus-900 transition hover:bg-nexus-50"
                 >
                   Falar no Instagram
                 </a>
               </div>
-            </div>
-            <div className="absolute -bottom-6 -left-4 hidden max-w-[220px] rounded-2xl border border-slate-200/80 bg-white/95 p-4 text-xs text-slate-600 shadow-lg backdrop-blur sm:block">
-              <p className="font-semibold text-nexus-900">{clinic.tagline}</p>
-              <p className="mt-1 leading-relaxed">
-                Oito frentes — da saúde mental ao treino funcional.
-              </p>
             </div>
           </div>
         </div>

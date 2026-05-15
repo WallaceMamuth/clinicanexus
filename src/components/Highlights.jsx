@@ -3,15 +3,15 @@ import { clinic } from "../data/clinic.js";
 const bullets = [
   {
     title: "Saúde de ponta a ponta",
-    text: "Do clínico geral à saúde mental, da ortopedia à nutrição — um hub para você por inteiro.",
+    text: "Do clínico geral à saúde mental, da ortopedia à nutrição, tudo em um só lugar para você por inteiro.",
   },
   {
     title: "Movimento e estética",
-    text: "CrossFit, treinamento funcional, fisioterapia e estética facial e corporal no mesmo ecossistema.",
+    text: "CrossFit, treinamento funcional, fisioterapia e estética facial e corporal no mesmo espaço de cuidado.",
   },
   {
     title: "Agende pelo Instagram",
-    text: `Tire dúvidas e marque horário com a equipe pelo perfil @${clinic.instagramHandle}.`,
+    text: `Tire dúvidas e agende um horário com a equipe pelo perfil @${clinic.instagramHandle}.`,
   },
 ];
 
@@ -22,15 +22,23 @@ export default function Highlights() {
       className="relative overflow-hidden bg-linear-to-b from-nexus-950 via-nexus-900 to-slate-950 py-20 text-white sm:py-24"
     >
       <div
-        className="pointer-events-none absolute right-0 top-0 h-96 w-96 translate-x-1/3 -translate-y-1/4 rounded-full bg-nexus-500/15 blur-3xl"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-10%,rgba(94,234,212,0.12),transparent_55%)]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute bottom-0 left-0 h-80 w-80 -translate-x-1/3 translate-y-1/4 rounded-full bg-sky-500/10 blur-3xl"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_100%,rgba(56,189,248,0.08),transparent_45%)]"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute right-0 top-0 z-[1] h-96 w-96 translate-x-1/3 -translate-y-1/4 rounded-full bg-nexus-500/15 blur-3xl"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute bottom-0 left-0 z-[1] h-80 w-80 -translate-x-1/3 translate-y-1/4 rounded-full bg-sky-500/10 blur-3xl"
         aria-hidden
       />
 
-      <div className="relative mx-auto grid max-w-6xl gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-8">
+      <div className="relative z-10 mx-auto grid max-w-6xl gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-8">
         <div>
           <p className="text-sm font-semibold uppercase tracking-widest text-nexus-300">
             Por que {clinic.name.replace("Clínica ", "")}
@@ -63,7 +71,7 @@ export default function Highlights() {
           <div className="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-xl sm:p-10">
             <blockquote className="font-display text-xl font-medium leading-snug text-white sm:text-2xl">
               “Quero cuidar da saúde, da mente, da estética e ainda treinar com
-              orientação — tudo integrado.”
+              orientação, tudo de forma integrada.”
             </blockquote>
             <footer className="mt-8 flex items-center gap-3">
               <div className="h-11 w-11 rounded-full bg-linear-to-br from-nexus-400 to-sky-400 ring-2 ring-white/20" />

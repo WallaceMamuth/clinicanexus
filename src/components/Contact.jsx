@@ -12,8 +12,15 @@ export default function Contact() {
   }
 
   return (
-    <section id="contato" className="bg-surface py-20 sm:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section
+      id="contato"
+      className="relative isolate overflow-hidden border-t border-slate-200/70 bg-section-contact py-20 sm:py-24"
+    >
+      <div
+        className="pointer-events-none absolute -right-24 top-1/2 h-[min(70vw,28rem)] w-[min(70vw,28rem)] -translate-y-1/2 rounded-full bg-nexus-400/10 blur-3xl"
+        aria-hidden
+      />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
           <div>
             <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
@@ -23,7 +30,16 @@ export default function Contact() {
               {clinic.scheduleCta}
             </p>
             <p className="mt-3 text-lg text-ink-muted">
-              O jeito mais rápido de agendar é pelo Instagram{" "}
+              Ligue para o fixo, fale pelo{" "}
+              <a
+                href={clinic.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-nexus-800 underline-offset-4 hover:underline"
+              >
+                WhatsApp
+              </a>{" "}
+              ou envie mensagem no Direct do{" "}
               <a
                 href={clinic.instagramUrl}
                 target="_blank"
@@ -32,11 +48,50 @@ export default function Contact() {
               >
                 @{clinic.instagramHandle}
               </a>
-              . O formulário abaixo é demonstração (sem envio a servidor) — use-o
-              quando conectar um serviço de formulário ou API.
+              . O formulário ao lado é apenas demonstrativo e não envia dados a
+              nenhum servidor.
             </p>
 
             <dl className="mt-10 space-y-6 text-sm">
+              <div className="flex gap-4">
+                <dt className="w-28 shrink-0 font-semibold text-nexus-900">
+                  Endereço
+                </dt>
+                <dd className="text-ink-muted">
+                  {clinic.address}
+                  <br />
+                  <a
+                    className="mt-1 inline-block font-medium text-nexus-800 underline-offset-4 hover:underline"
+                    href={clinic.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Ver no mapa ↗
+                  </a>
+                </dd>
+              </div>
+              <div className="flex gap-4">
+                <dt className="w-28 shrink-0 font-semibold text-nexus-900">
+                  Telefone
+                </dt>
+                <dd className="text-ink-muted">
+                  <a
+                    className="font-semibold text-nexus-800 underline-offset-4 hover:underline"
+                    href={clinic.phoneFixedHref}
+                  >
+                    {clinic.phoneFixed}
+                  </a>
+                  <span className="mx-1.5 text-slate-300">|</span>
+                  <a
+                    className="font-semibold text-nexus-800 underline-offset-4 hover:underline"
+                    href={clinic.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    WhatsApp {clinic.phoneWhatsapp}
+                  </a>
+                </dd>
+              </div>
               <div className="flex gap-4">
                 <dt className="w-28 shrink-0 font-semibold text-nexus-900">
                   Instagram
@@ -53,40 +108,33 @@ export default function Contact() {
                       ↗
                     </span>
                   </a>
-                  <p className="mt-1 text-ink-muted">
-                    Direct para agendamento e dúvidas sobre {clinic.tagline}.
-                  </p>
-                </dd>
-              </div>
-              <div className="flex gap-4">
-                <dt className="w-28 shrink-0 font-semibold text-nexus-900">
-                  Endereço
-                </dt>
-                <dd className="text-ink-muted">
-                  Informe o endereço completo da unidade quando tiver o texto
-                  final.
-                </dd>
-              </div>
-              <div className="flex gap-4">
-                <dt className="w-28 shrink-0 font-semibold text-nexus-900">
-                  Telefone
-                </dt>
-                <dd className="text-ink-muted">
-                  Adicione WhatsApp ou telefone aqui — por enquanto, use o
-                  Instagram para agendar.
+                <p className="mt-1 text-ink-muted">
+                  Novidades e contato pelo Direct.
+                </p>
                 </dd>
               </div>
             </dl>
 
-            <a
-              href={clinic.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-purple-600 via-pink-600 to-orange-500 px-6 py-4 text-base font-semibold text-white shadow-lg transition hover:opacity-95 sm:w-auto"
-            >
-              Abrir Instagram
-              <span aria-hidden>↗</span>
-            </a>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a
+                href={clinic.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-2xl bg-[#25D366] px-6 py-4 text-base font-semibold text-white shadow-lg transition hover:bg-[#20bd5a] sm:w-auto"
+              >
+                WhatsApp
+                <span aria-hidden>↗</span>
+              </a>
+              <a
+                href={clinic.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-purple-600 via-pink-600 to-orange-500 px-6 py-4 text-base font-semibold text-white shadow-lg transition hover:opacity-95 sm:w-auto"
+              >
+                Instagram
+                <span aria-hidden>↗</span>
+              </a>
+            </div>
           </div>
 
           <div className="rounded-[1.75rem] border border-slate-200/80 bg-white p-6 shadow-xl shadow-slate-900/5 sm:p-8">
@@ -162,9 +210,9 @@ export default function Contact() {
 
               {sent ? (
                 <p className="rounded-xl bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-800 ring-1 ring-emerald-200/80">
-                  Mensagem registrada apenas neste navegador (demo). Para
-                  produção, prefira o direct em @{clinic.instagramHandle} ou
-                  conecte um formulário externo.
+                  Mensagem registrada apenas neste navegador (demonstração). Para
+                  falar com a clínica, use o WhatsApp ou ligue para{" "}
+                  {clinic.phoneFixed}.
                 </p>
               ) : null}
 
@@ -172,7 +220,7 @@ export default function Contact() {
                 type="submit"
                 className="w-full rounded-xl bg-nexus-900 py-3.5 text-sm font-semibold text-white shadow-lg shadow-nexus-900/20 transition hover:bg-nexus-800"
               >
-                Enviar pedido de contato (demo)
+                Enviar pedido de contato (demonstração)
               </button>
             </form>
           </div>

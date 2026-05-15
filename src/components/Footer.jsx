@@ -3,7 +3,7 @@ import { clinic } from "../data/clinic.js";
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-slate-200 bg-white py-12">
+    <footer id="site-footer" className="border-t border-slate-200 bg-white py-12">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <div className="flex items-center gap-2.5">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-nexus-800 to-nexus-900 text-sm font-bold text-white">
@@ -15,6 +15,22 @@ export default function Footer() {
             </p>
             <p className="text-sm text-ink-muted">
               {clinic.tagline} · {year}
+            </p>
+            <p className="mt-2 max-w-md text-xs leading-relaxed text-slate-500">
+              {clinic.address}
+              <br />
+              <a className="text-nexus-800 hover:underline" href={clinic.phoneFixedHref}>
+                {clinic.phoneFixed}
+              </a>
+              {" · "}
+              <a
+                className="text-nexus-800 hover:underline"
+                href={clinic.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp {clinic.phoneWhatsapp}
+              </a>
             </p>
           </div>
         </div>
@@ -42,8 +58,16 @@ export default function Footer() {
         </nav>
       </div>
       <p className="mx-auto mt-8 max-w-6xl px-4 text-center text-xs text-slate-400 sm:px-6 lg:px-8">
-        Site estático. Inclua política de privacidade e dados cadastrais conforme
-        a operação da clínica.
+        Desenvolvido por{" "}
+        <a
+          className="font-medium text-nexus-800 underline-offset-2 hover:text-nexus-900 hover:underline"
+          href="https://www.watechevoce.com.br"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          W.A.Techevoce
+        </a>{" "}
+        Portfólio
       </p>
     </footer>
   );
