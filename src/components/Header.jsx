@@ -54,7 +54,7 @@ export default function Header() {
         : "border-b border-transparent bg-transparent";
 
   const linkBase =
-    "rounded-xl px-2.5 py-1.5 text-[13px] font-medium transition xl:px-3 xl:text-sm";
+    "rounded-xl px-2 py-1.5 text-xs font-medium transition lg:px-2.5 lg:text-[13px] xl:px-3 xl:text-sm";
   const linkClass = lightNav
     ? `${linkBase} text-white/92 hover:bg-white/12 hover:text-white`
     : `${linkBase} text-brand-navy/80 hover:bg-brand-mist hover:text-brand-navy`;
@@ -65,10 +65,10 @@ export default function Header() {
 
   return (
     <header className={`fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] transition-[background,box-shadow,backdrop-filter,border-color] duration-500 ease-out ${shell}`}>
-      <div className="mx-auto flex h-16 max-w-6xl min-w-0 items-center justify-between gap-2 pl-[max(0.75rem,env(safe-area-inset-left))] pr-[max(0.75rem,env(safe-area-inset-right))] sm:gap-3 lg:pl-8 lg:pr-8 2xl:max-w-[80rem] 2xl:px-10">
+      <div className="container-site flex h-16 min-w-0 items-center justify-between gap-2 sm:gap-3">
         <a
           href="#inicio"
-          className="group flex min-w-0 max-w-[min(100%,14rem)] items-center rounded-2xl outline-none ring-white/0 focus-visible:ring-2 focus-visible:ring-brand-green sm:max-w-none"
+          className="group flex min-w-0 max-w-[46%] items-center rounded-2xl outline-none ring-white/0 focus-visible:ring-2 focus-visible:ring-brand-green sm:max-w-none"
         >
           <Logo variant="header" tone={lightNav ? "light" : "dark"} />
         </a>
@@ -124,7 +124,7 @@ export default function Header() {
         }`}
         aria-hidden={!open}
       >
-        <nav className="mx-auto flex max-h-[min(100dvh-4rem,32rem)] w-full max-w-6xl min-w-0 flex-col gap-0.5 overflow-y-auto overscroll-y-contain px-4 py-3 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-6 2xl:max-w-[80rem]">
+        <nav className="container-site flex max-h-[min(100dvh-4rem,32rem)] min-w-0 flex-col gap-0.5 overflow-y-auto overscroll-y-contain py-3 pb-[max(1rem,env(safe-area-inset-bottom))]">
           {nav.map((item) => (
             <a
               key={item.href}

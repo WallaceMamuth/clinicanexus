@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Autoplay, EffectFade } from "swiper/modules";
@@ -17,16 +17,29 @@ export default function Hero() {
   const reduceMotion = useReducedMotion();
   const swiperRef = useRef(null);
   const [active, setActive] = useState(0);
+  const [zoomSlides, setZoomSlides] = useState(false);
+
+  useEffect(() => {
+    if (reduceMotion) {
+      setZoomSlides(false);
+      return undefined;
+    }
+    const mq = window.matchMedia("(min-width: 768px)");
+    const apply = () => setZoomSlides(mq.matches);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, [reduceMotion]);
 
   const current = slides[active] ?? slides[0];
 
   return (
     <section
       id="inicio"
-      className="relative h-[100dvh] min-h-[100dvh] overflow-hidden bg-brand-navy supports-[height:100dvh]:min-h-[100dvh]"
+      className="hero-viewport relative overflow-hidden bg-brand-navy"
     >
       <Swiper
-        className="hero-swiper absolute inset-0 h-full min-h-[100dvh] w-full touch-pan-y"
+        className="hero-swiper absolute inset-0 h-full min-h-full w-full touch-pan-y"
         modules={[Autoplay, EffectFade]}
         effect={reduceMotion ? "slide" : "fade"}
         fadeEffect={{ crossFade: true }}
@@ -51,19 +64,19 @@ export default function Hero() {
         }}
       >
         {slides.map((slide, i) => (
-          <SwiperSlide key={slide.image} className="!h-[100dvh] min-h-[100dvh]">
-            <div className="relative h-full min-h-[100dvh] w-full min-w-0 overflow-hidden">
+          <SwiperSlide key={slide.image} className="!h-full min-h-full">
+            <div className="relative h-full min-h-full w-full min-w-0 overflow-hidden">
               <motion.img
                 src={slide.image}
                 alt=""
                 width={1920}
                 height={1080}
                 sizes="100vw"
-                className="h-full w-full min-h-[100dvh] min-w-0 object-cover object-center"
+                className="h-full w-full min-h-full min-w-0 object-cover object-center"
                 decoding={i === 0 ? "sync" : "async"}
                 fetchPriority={i === 0 ? "high" : "low"}
                 initial={{ scale: 1 }}
-                animate={{ scale: reduceMotion ? 1 : active === i ? 1.05 : 1 }}
+                animate={{ scale: zoomSlides && active === i ? 1.05 : 1 }}
                 transition={{
                   duration: reduceMotion ? 0 : active === i ? SLIDE_MS / 1000 : 0.55,
                   ease: "linear",
@@ -75,16 +88,16 @@ export default function Hero() {
       </Swiper>
 
       <div
-        className="pointer-events-none absolute inset-0 z-[2] bg-linear-to-t from-brand-navy via-brand-navy/82 to-brand-navy/45"
+        className="pointer-events-none absolute inset-0 z-[2] bg-linear-to-t from-brand-navy via-brand-navy/88 to-brand-navy/55 lg:via-brand-navy/82 lg:to-brand-navy/45"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_90%_70%_at_70%_20%,transparent_0%,rgb(11_44_102_0.55)_75%)] max-lg:bg-[radial-gradient(ellipse_120%_85%_at_50%_30%,transparent_0%,rgb(11_44_102_0.5)_78%)]"
+        className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_90%_70%_at_70%_20%,transparent_0%,rgb(11_44_102_0.55)_75%)] max-lg:bg-[radial-gradient(ellipse_120%_85%_at_50%_30%,transparent_0%,rgb(11_44_102_0.55)_78%)]"
         aria-hidden
       />
 
-      <div className="pointer-events-none absolute inset-0 z-[3] flex h-[100dvh] min-h-[100dvh] flex-col justify-end pt-[calc(4rem+env(safe-area-inset-top))]">
-        <div className="pointer-events-auto mx-auto w-full min-w-0 max-w-6xl px-4 pb-[max(2.75rem,env(safe-area-inset-bottom))] sm:px-6 sm:pb-14 md:pb-16 lg:px-8 2xl:max-w-[80rem] 2xl:px-10">
+      <div className="pointer-events-none absolute inset-0 z-[3] flex hero-viewport flex-col justify-end pt-[calc(4rem+env(safe-area-inset-top))]">
+        <div className="container-site pointer-events-auto pb-[max(2.75rem,env(safe-area-inset-bottom))] sm:pb-14 md:pb-16">
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
@@ -155,10 +168,10 @@ export default function Hero() {
             <div className="min-w-0">
               <dt className="sr-only">Especialidades</dt>
               <dd className="min-w-0">
-                <p className="font-display text-lg font-semibold tabular-nums text-white sm:text-2xl md:text-3xl">
+                <p className="text-fluid-stat font-display font-semibold tabular-nums text-white">
                   8+
                 </p>
-                <p className="mt-0.5 text-[0.65rem] font-medium leading-snug text-white/70 sm:mt-1 sm:text-xs md:text-sm">
+                <p className="text-fluid-stat-label mt-0.5 font-medium text-white/70 sm:mt-1">
                   Especialidades
                 </p>
               </dd>
@@ -166,8 +179,8 @@ export default function Hero() {
             <div className="min-w-0">
               <dt className="sr-only">Bem-estar</dt>
               <dd className="min-w-0">
-                <p className="font-display text-lg font-semibold text-white sm:text-2xl md:text-3xl">360°</p>
-                <p className="mt-0.5 text-[0.65rem] font-medium leading-snug text-white/70 sm:mt-1 sm:text-xs md:text-sm">
+                <p className="text-fluid-stat font-display font-semibold text-white">360°</p>
+                <p className="text-fluid-stat-label mt-0.5 font-medium text-white/70 sm:mt-1">
                   Cuidado integral
                 </p>
               </dd>
@@ -175,10 +188,10 @@ export default function Hero() {
             <div className="min-w-0">
               <dt className="sr-only">Instagram</dt>
               <dd className="min-w-0">
-                <p className="truncate font-display text-sm font-semibold tracking-tight text-white sm:text-lg md:text-xl">
+                <p className="truncate text-fluid-stat font-display font-semibold tracking-tight text-white">
                   @{clinic.instagramHandle}
                 </p>
-                <p className="mt-0.5 text-[0.65rem] font-medium leading-snug text-white/70 sm:mt-1 sm:text-xs md:text-sm">
+                <p className="text-fluid-stat-label mt-0.5 font-medium text-white/70 sm:mt-1">
                   Novidades
                 </p>
               </dd>

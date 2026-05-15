@@ -38,7 +38,7 @@ export default function Benefits() {
             const Icon = icons[i] ?? HeartHandshake;
             return (
               <Reveal key={b.title} delay={i * 0.05}>
-                <li className="group flex h-full min-w-0 flex-col rounded-2xl border border-brand-white/15 bg-brand-white/10 p-5 shadow-sm backdrop-blur-md transition hover:border-brand-white/25 hover:bg-brand-white/14 sm:p-6">
+                <li className="group flex h-full min-w-0 flex-col rounded-2xl border border-brand-white/15 bg-brand-white/10 p-5 shadow-sm backdrop-blur-md transition hover:border-brand-white/25 hover:bg-brand-white/14 sm:col-span-2 sm:last:col-span-2 lg:col-span-1 lg:last:col-span-1 sm:p-6">
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-white/15 text-brand-white ring-1 ring-brand-white/20 transition group-hover:text-brand-green">
                     <Icon className="h-5 w-5" strokeWidth={1.6} aria-hidden />
                   </span>

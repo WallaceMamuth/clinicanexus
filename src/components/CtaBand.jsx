@@ -9,7 +9,7 @@ export default function CtaBand() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_50%_120%,rgb(102_194_58/0.12),transparent_55%)]"
         aria-hidden
       />
-      <div className="relative mx-auto w-full min-w-0 max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+      <motion.div className="container-site relative max-w-4xl text-center">
         <Reveal>
           <h2 className="text-fluid-section-title font-display font-semibold tracking-tight text-brand-navy text-balance">
             Pronto para dar o próximo passo no seu cuidado?

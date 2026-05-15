@@ -31,7 +31,7 @@ export default function Contact() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-green">
               Contato
             </p>
-            <h2 className="text-fluid-section-title mt-3 font-display font-semibold tracking-tight text-brand-navy">
+            <h2 className="text-fluid-section-title mt-3 font-display font-semibold tracking-tight text-brand-navy text-balance">
               Fale com a {clinic.brandLine}
             </h2>
             <p className="text-fluid-lead mt-4 font-medium text-brand-navy/90">
