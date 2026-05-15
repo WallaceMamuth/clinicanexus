@@ -27,7 +27,14 @@ export const clinic = {
   heroHeadline: "Cuidando da sua saúde com excelência e acolhimento.",
   heroSubheadline:
     "Medicina integrada, bem-estar e performance em um ambiente pensado para você se sentir seguro, ouvido e cuidado em cada etapa.",
-  heroImage: asset("hero-main.jpg"),
+  /** Slides do hero fullscreen (troca automática). */
+  heroSlides: [
+    { src: asset("hero-main.jpg"), alt: "Atendimento clínico" },
+    { src: asset("about-space.jpg"), alt: "Ambiente da clínica" },
+    { src: asset("services/clinico-geral.jpg"), alt: "Cuidado clínico" },
+    { src: asset("services/fisioterapia.jpg"), alt: "Reabilitação e movimento" },
+    { src: asset("services/estetica.jpg"), alt: "Estética e bem-estar" },
+  ],
   aboutImage: asset("about-space.jpg"),
   about: {
     eyebrow: "Nossa história",
