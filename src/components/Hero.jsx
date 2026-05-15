@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { Autoplay, EffectFade, Navigation } from "swiper/modules";
+import { ArrowUpRight } from "lucide-react";
+import { Autoplay, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { clinic } from "../data/clinic.js";
 
@@ -15,28 +15,8 @@ const easeSoft = [0.45, 0, 0.55, 1];
 export default function Hero() {
   const slides = clinic.heroSlides;
   const reduceMotion = useReducedMotion();
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
   const swiperRef = useRef(null);
   const [active, setActive] = useState(0);
-
-  const bindNav = (swiper) => {
-    queueMicrotask(() => {
-      const prev = prevRef.current;
-      const next = nextRef.current;
-      if (!swiper || !prev || !next) return;
-      const params = swiper.params.navigation;
-      if (typeof params === "object" && params) {
-        params.prevEl = prev;
-        params.nextEl = next;
-      }
-      if (swiper.navigation) {
-        swiper.navigation.destroy();
-        swiper.navigation.init();
-        swiper.navigation.update();
-      }
-    });
-  };
 
   const current = slides[active] ?? slides[0];
 
@@ -47,7 +27,7 @@ export default function Hero() {
     >
       <Swiper
         className="hero-swiper absolute inset-0 h-full min-h-[100dvh] w-full touch-pan-y"
-        modules={[Autoplay, EffectFade, Navigation]}
+        modules={[Autoplay, EffectFade]}
         effect={reduceMotion ? "slide" : "fade"}
         fadeEffect={{ crossFade: true }}
         speed={reduceMotion ? 400 : 1000}
@@ -64,12 +44,10 @@ export default function Hero() {
                 pauseOnMouseEnter: false,
               }
         }
-        navigation
         onSlideChange={(swiper) => setActive(swiper.realIndex)}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
           setActive(swiper.realIndex);
-          bindNav(swiper);
         }}
       >
         {slides.map((slide, i) => (
@@ -105,29 +83,8 @@ export default function Hero() {
         aria-hidden
       />
 
-      {slides.length > 1 ? (
-        <>
-          <button
-            ref={prevRef}
-            type="button"
-            className="pointer-events-auto absolute left-[max(0.5rem,env(safe-area-inset-left))] top-[42%] z-40 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-white/15 text-white shadow-[0_8px_32px_rgb(0_0_0_0.2)] backdrop-blur-xl transition duration-300 will-change-transform hover:scale-105 hover:border-white/55 hover:bg-white/25 active:scale-95 sm:left-3 sm:h-12 sm:w-12 md:left-6 md:top-1/2 md:h-14 md:w-14"
-            aria-label="Slide anterior"
-          >
-            <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" strokeWidth={1.75} aria-hidden />
-          </button>
-          <button
-            ref={nextRef}
-            type="button"
-            className="pointer-events-auto absolute right-[max(0.5rem,env(safe-area-inset-right))] top-[42%] z-40 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-white/15 text-white shadow-[0_8px_32px_rgb(0_0_0_0.2)] backdrop-blur-xl transition duration-300 will-change-transform hover:scale-105 hover:border-white/55 hover:bg-white/25 active:scale-95 sm:right-3 sm:h-12 sm:w-12 md:right-6 md:top-1/2 md:h-14 md:w-14"
-            aria-label="Próximo slide"
-          >
-            <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" strokeWidth={1.75} aria-hidden />
-          </button>
-        </>
-      ) : null}
-
       <div className="pointer-events-none absolute inset-0 z-[3] flex h-[100dvh] min-h-[100dvh] flex-col justify-end pt-[calc(4rem+env(safe-area-inset-top))]">
-        <div className="pointer-events-auto mx-auto w-full min-w-0 max-w-6xl px-4 pb-[max(2.75rem,env(safe-area-inset-bottom))] max-md:px-12 sm:px-6 sm:pb-14 md:pb-16 lg:px-8 2xl:max-w-[80rem] 2xl:px-10">
+        <div className="pointer-events-auto mx-auto w-full min-w-0 max-w-6xl px-4 pb-[max(2.75rem,env(safe-area-inset-bottom))] sm:px-6 sm:pb-14 md:pb-16 lg:px-8 2xl:max-w-[80rem] 2xl:px-10">
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
