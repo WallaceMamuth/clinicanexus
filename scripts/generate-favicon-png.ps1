@@ -47,8 +47,11 @@ $round.AddArc($w - 21, $h - 21, 20, 20, 0, 90)
 $round.AddArc(0, $h - 21, 20, 20, 90, 90)
 $round.CloseFigure()
 $gl.FillPath($navy, $round)
-$gl.DrawString("Cl`u{00ED}nica Nexus", $font, $white, 18, 18)
-$gl.DrawString("Sa`u{00FA}de e Bem-Estar", $fontSmall, $green, 18, 58)
+# Acentos via [char] (evita escapes `u{} que podem ir literais para o PNG)
+$line1 = "Cl" + [char]0x00ED + "nica Nexus"
+$line2 = "Sa" + [char]0x00FA + "de e Bem-Estar"
+$gl.DrawString($line1, $font, $white, 18, 18)
+$gl.DrawString($line2, $fontSmall, $green, 18, 58)
 $font.Dispose()
 $fontSmall.Dispose()
 $navy.Dispose()

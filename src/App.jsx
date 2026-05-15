@@ -12,19 +12,22 @@ import FloatingWhatsApp from "./components/FloatingWhatsApp.jsx";
 
 export default function App() {
   return (
-    <div className="min-h-dvh w-full min-w-0 overflow-x-clip bg-brand-white">
+    <div className="min-h-dvh w-full min-w-0 bg-brand-white">
       <Header />
-      <main className="relative w-full min-w-0">
-        <Hero />
-        <About />
-        <Services />
-        <Benefits />
-        <Team />
-        <Testimonials />
-        <CtaBand />
-        <Contact />
-      </main>
-      <Footer />
+      {/* overflow-x só aqui: clip em html/body recorta position:fixed do header/WhatsApp */}
+      <div className="min-w-0 overflow-x-clip">
+        <main className="relative w-full min-w-0">
+          <Hero />
+          <About />
+          <Services />
+          <Benefits />
+          <Team />
+          <Testimonials />
+          <CtaBand />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
       <FloatingWhatsApp />
     </div>
   );
