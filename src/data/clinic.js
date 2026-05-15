@@ -24,16 +24,28 @@ export const clinic = {
   },
   scheduleCta:
     "Agende seu atendimento com tranquilidade: nossa equipe está pronta para acolher você.",
-  heroHeadline: "Cuidando da sua saúde com excelência e acolhimento.",
-  heroSubheadline:
-    "Medicina integrada, bem-estar e performance em um ambiente pensado para você se sentir seguro, ouvido e cuidado em cada etapa.",
-  /** Slides do hero fullscreen (troca automática). */
+  /** Hero fullscreen: imagem + copy por slide (Swiper). */
   heroSlides: [
-    { src: asset("hero-main.jpg"), alt: "Atendimento clínico" },
-    { src: asset("about-space.jpg"), alt: "Ambiente da clínica" },
-    { src: asset("services/clinico-geral.jpg"), alt: "Cuidado clínico" },
-    { src: asset("services/fisioterapia.jpg"), alt: "Reabilitação e movimento" },
-    { src: asset("services/estetica.jpg"), alt: "Estética e bem-estar" },
+    {
+      image: asset("hero-main.jpg"),
+      headline: "Cuidando da sua saúde com excelência e acolhimento.",
+      text: "Medicina integrada e atendimento humanizado para você se sentir seguro e bem cuidado.",
+    },
+    {
+      image: asset("about-space.jpg"),
+      headline: "Tecnologia moderna com cuidado humano.",
+      text: "Equipamentos avançados e profissionais preparados para oferecer mais precisão e confiança.",
+    },
+    {
+      image: asset("services/estetica.jpg"),
+      headline: "Bem-estar e saúde em cada detalhe.",
+      text: "Criamos um ambiente acolhedor focado no equilíbrio, prevenção e qualidade de vida.",
+    },
+    {
+      image: asset("services/fisioterapia.jpg"),
+      headline: "Atendimento pensado para você.",
+      text: "Cada paciente recebe atenção personalizada em um espaço moderno e confortável.",
+    },
   ],
   aboutImage: asset("about-space.jpg"),
   about: {
