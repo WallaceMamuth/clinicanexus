@@ -2,7 +2,7 @@ import { clinic, logoUrl } from "../data/clinic.js";
 
 /**
  * @param {"header" | "footer"} variant
- * @param {"light" | "dark"} tone — light: sobre hero escuro (vidro claro + sombra no logo)
+ * @param {"light" | "dark"} tone. "light": sobre hero escuro (vidro claro + sombra no logo).
  */
 export default function Logo({ variant = "header", tone = "dark" }) {
   const light = tone === "light";

@@ -32,7 +32,7 @@ export default function FloatingWhatsApp() {
       href={clinic.whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-brand-green text-brand-white shadow-lg shadow-brand-navy/15 ring-2 ring-brand-white transition-all duration-300 ease-out hover:scale-105 hover:bg-brand-green/92 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-navy ${
+      className={`fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1.25rem,env(safe-area-inset-right))] z-40 flex h-14 w-14 min-h-[56px] min-w-[56px] items-center justify-center rounded-full bg-brand-green text-brand-white shadow-lg shadow-brand-navy/15 ring-2 ring-brand-white transition-all duration-300 ease-out hover:scale-105 hover:bg-brand-green/92 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-navy ${
         footerInView
           ? "pointer-events-none translate-y-3 scale-90 opacity-0"
           : "translate-y-0 scale-100 opacity-100"

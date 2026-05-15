@@ -12,9 +12,9 @@ import FloatingWhatsApp from "./components/FloatingWhatsApp.jsx";
 
 export default function App() {
   return (
-    <div className="min-h-dvh overflow-x-hidden bg-brand-white">
+    <div className="min-h-dvh w-full min-w-0 overflow-x-clip bg-brand-white">
       <Header />
-      <main>
+      <main className="relative w-full min-w-0">
         <Hero />
         <About />
         <Services />

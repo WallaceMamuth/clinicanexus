@@ -64,8 +64,8 @@ export default function Header() {
     : "border-brand-navy/12 bg-brand-white text-brand-navy shadow-sm hover:bg-brand-mist";
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 transition-[background,box-shadow,backdrop-filter,border-color] duration-500 ease-out ${shell}`}>
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-3 sm:gap-3 sm:px-5 lg:px-8">
+    <header className={`fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] transition-[background,box-shadow,backdrop-filter,border-color] duration-500 ease-out ${shell}`}>
+      <div className="mx-auto flex h-16 max-w-6xl min-w-0 items-center justify-between gap-2 pl-[max(0.75rem,env(safe-area-inset-left))] pr-[max(0.75rem,env(safe-area-inset-right))] sm:gap-3 lg:pl-8 lg:pr-8 2xl:max-w-[80rem] 2xl:px-10">
         <a
           href="#inicio"
           className="group flex min-w-0 max-w-[min(100%,14rem)] items-center rounded-2xl outline-none ring-white/0 focus-visible:ring-2 focus-visible:ring-brand-green sm:max-w-none"
@@ -84,7 +84,7 @@ export default function Header() {
         <div className="flex shrink-0 items-center lg:hidden">
           <button
             type="button"
-            className={`inline-flex h-10 w-10 items-center justify-center rounded-xl ${menuBtn}`}
+            className={`inline-flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl ${menuBtn}`}
             aria-expanded={open}
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             onClick={() => setOpen((v) => !v)}
@@ -111,7 +111,7 @@ export default function Header() {
       </div>
 
       <div
-        className={`fixed inset-0 top-16 z-[45] bg-brand-navy/50 transition-opacity lg:hidden ${
+        className={`fixed inset-0 top-[calc(4rem+env(safe-area-inset-top))] z-[45] bg-brand-navy/50 transition-opacity lg:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         aria-hidden
@@ -119,17 +119,17 @@ export default function Header() {
       />
 
       <div
-        className={`fixed inset-x-0 top-16 z-[46] max-h-[calc(100dvh-4rem)] border-b border-brand-navy/10 bg-brand-white shadow-card transition-[transform,opacity] duration-200 ease-out lg:hidden ${
+        className={`fixed inset-x-0 top-[calc(4rem+env(safe-area-inset-top))] z-[46] max-h-[calc(100dvh-4rem-env(safe-area-inset-top))] border-b border-brand-navy/10 bg-brand-white shadow-card transition-[transform,opacity] duration-200 ease-out lg:hidden ${
           open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0"
         }`}
         aria-hidden={!open}
       >
-        <nav className="mx-auto flex max-h-full max-w-6xl flex-col gap-0.5 overflow-y-auto overscroll-contain px-4 py-4 sm:px-6">
+        <nav className="mx-auto flex max-h-[min(100dvh-4rem,32rem)] w-full max-w-6xl min-w-0 flex-col gap-0.5 overflow-y-auto overscroll-y-contain px-4 py-3 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-6 2xl:max-w-[80rem]">
           {nav.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="rounded-xl px-4 py-3 text-base font-medium text-brand-navy/85 hover:bg-brand-mist"
+              className="flex min-h-[48px] items-center rounded-xl px-4 py-2 text-base font-medium text-brand-navy/85 hover:bg-brand-mist active:bg-brand-mist/80"
               onClick={() => setOpen(false)}
             >
               {item.label}
@@ -139,7 +139,7 @@ export default function Header() {
             href={clinic.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-xl px-4 py-3 text-base font-medium text-brand-navy/85 hover:bg-brand-mist"
+            className="flex min-h-[48px] items-center rounded-xl px-4 py-2 text-base font-medium text-brand-navy/85 hover:bg-brand-mist active:bg-brand-mist/80"
             onClick={() => setOpen(false)}
           >
             Instagram @{clinic.instagramHandle}

@@ -52,7 +52,7 @@ export const clinic = {
     eyebrow: "Nossa história",
     title: "Um espaço onde ciência e humanização caminham juntas",
     paragraphs: [
-      "A Clínica Nexus nasceu da vontade de reunir, em um só endereço, o que há de melhor em cuidado clínico, estética, movimento e saúde mental — sempre com olhar atento às suas necessidades reais.",
+      "A Clínica Nexus nasceu da vontade de reunir, em um só endereço, o que há de melhor em cuidado clínico, estética, movimento e saúde mental, com olhar atento às suas necessidades reais.",
       "Acreditamos que saúde de verdade combina tecnologia, protocolos seguros e um atendimento próximo. Por isso investimos em profissionais qualificados, salas acolhedoras e uma jornada simples, do primeiro contato ao pós-consulta.",
     ],
   },

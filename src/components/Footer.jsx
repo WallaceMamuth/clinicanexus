@@ -25,20 +25,20 @@ export default function Footer() {
   return (
     <footer
       id="site-footer"
-      className="border-t border-brand-navy/10 bg-brand-white py-14"
+      className="border-t border-brand-navy/10 bg-brand-white py-12 sm:py-14"
     >
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 sm:px-6 lg:flex-row lg:items-start lg:justify-between lg:px-8">
-        <div className="flex max-w-md flex-col gap-4">
+      <div className="container-site flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+        <div className="flex min-w-0 max-w-md flex-col gap-4">
           <Logo variant="footer" />
           <div>
-            <p className="font-display text-lg font-semibold text-brand-navy">
+            <p className="font-display text-lg font-semibold text-brand-navy sm:text-xl">
               {clinic.brandLine}
             </p>
-            <p className="mt-1 text-sm text-ink-muted">{clinic.tagline}</p>
+            <p className="text-fluid-body mt-1 text-ink-muted">{clinic.tagline}</p>
           </div>
           <p className="flex items-start gap-2 text-sm leading-relaxed text-ink-muted">
             <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" aria-hidden />
-            {clinic.address}
+            <span className="min-w-0 break-words">{clinic.address}</span>
           </p>
           <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ink-muted">
             <a
@@ -60,7 +60,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-12 lg:gap-16">
+        <div className="flex min-w-0 flex-col gap-6 sm:flex-row sm:items-start sm:gap-12 lg:gap-16">
           <nav className="flex flex-col gap-2 text-sm font-medium text-ink-muted">
             {footerNav.map((l) => (
               <a
@@ -89,10 +89,10 @@ export default function Footer() {
         </div>
       </div>
 
-      <p className="mx-auto mt-12 max-w-6xl border-t border-brand-navy/8 px-4 pt-8 text-center text-xs text-brand-navy/45 sm:px-6 lg:px-8">
+      <p className="container-site mt-10 border-t border-brand-navy/8 pt-8 text-center text-xs text-brand-navy/45 sm:mt-12">
         © {year} {clinic.brandLine}. Todos os direitos reservados.
       </p>
-      <p className="mx-auto mt-3 max-w-6xl px-4 text-center text-xs text-brand-navy/40 sm:px-6 lg:px-8">
+      <p className="container-site mt-3 text-center text-xs text-brand-navy/40">
         Desenvolvido por{" "}
         <a
           className="font-medium text-brand-navy underline-offset-2 hover:text-brand-green hover:underline"

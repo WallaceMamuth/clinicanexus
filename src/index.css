@@ -16,14 +16,47 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
   body {
     @apply bg-brand-white font-sans text-ink antialiased;
+    overflow-x: clip;
   }
 }
 
 @utility text-balance {
   text-wrap: balance;
+}
+
+/* Tipografia fluida e ritmo de seção */
+@utility text-fluid-hero {
+  font-size: clamp(1.625rem, 4.8vw + 0.55rem, 3.35rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+@utility text-fluid-section-title {
+  font-size: clamp(1.5rem, 2.4vw + 0.95rem, 2.35rem);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+}
+
+@utility text-fluid-lead {
+  font-size: clamp(1rem, 0.65vw + 0.88rem, 1.25rem);
+  line-height: 1.6;
+}
+
+@utility text-fluid-body {
+  font-size: clamp(0.9375rem, 0.35vw + 0.88rem, 1.0625rem);
+  line-height: 1.55;
+}
+
+@utility container-site {
+  @apply mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6 lg:px-8 2xl:max-w-[80rem] 2xl:px-10;
+}
+
+@utility section-y {
+  @apply py-16 sm:py-20 lg:py-24;
 }
 
 /* Fundos suaves (paleta exclusiva + gradientes discretos) */
