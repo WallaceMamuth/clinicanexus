@@ -1,5 +1,10 @@
 import { useState } from "react";
+import { MapPin } from "lucide-react";
 import { clinic, serviceTitles } from "../data/clinic.js";
+import Reveal from "./Reveal.jsx";
+
+const mapsEmbedSrc =
+  "https://maps.google.com/maps?q=Av.%20M%C3%A9xico%2C%201101%2C%20Sagrada%20Fam%C3%ADlia%2C%20Dois%20Vizinhos%20-%20PR&hl=pt&z=16&output=embed";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -14,76 +19,62 @@ export default function Contact() {
   return (
     <section
       id="contato"
-      className="relative isolate overflow-hidden border-t border-slate-200/70 bg-section-contact py-20 sm:py-24"
+      className="relative isolate overflow-hidden border-t border-brand-navy/8 bg-section-soft py-20 sm:py-24"
     >
       <div
-        className="pointer-events-none absolute -right-24 top-1/2 h-[min(70vw,28rem)] w-[min(70vw,28rem)] -translate-y-1/2 rounded-full bg-nexus-400/10 blur-3xl"
+        className="pointer-events-none absolute -right-24 top-1/2 h-[min(70vw,26rem)] w-[min(70vw,26rem)] -translate-y-1/2 rounded-full bg-brand-green/10 blur-3xl"
         aria-hidden
       />
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
-          <div>
-            <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-              Fale com a {clinic.name}
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <Reveal>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-green">
+              Contato
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-brand-navy sm:text-4xl">
+              Fale com a {clinic.brandLine}
             </h2>
-            <p className="mt-4 text-lg font-medium text-nexus-900">
+            <p className="mt-4 text-lg font-medium text-brand-navy/90">
               {clinic.scheduleCta}
             </p>
             <p className="mt-3 text-lg text-ink-muted">
-              Ligue para o fixo, fale pelo{" "}
-              <a
-                href={clinic.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-nexus-800 underline-offset-4 hover:underline"
-              >
-                WhatsApp
-              </a>{" "}
-              ou envie mensagem no Direct do{" "}
-              <a
-                href={clinic.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-nexus-800 underline-offset-4 hover:underline"
-              >
-                @{clinic.instagramHandle}
-              </a>
-              . O formulário ao lado é apenas demonstrativo e não envia dados a
-              nenhum servidor.
+              Prefere WhatsApp ou telefone? Estamos prontos para acolher sua
+              mensagem. O formulário ao lado é demonstrativo — para agendar de
+              fato, use os canais abaixo.
             </p>
 
             <dl className="mt-10 space-y-6 text-sm">
               <div className="flex gap-4">
-                <dt className="w-28 shrink-0 font-semibold text-nexus-900">
+                <dt className="flex w-28 shrink-0 items-start gap-2 font-semibold text-brand-navy">
+                  <MapPin className="mt-0.5 h-4 w-4 text-brand-green" aria-hidden />
                   Endereço
                 </dt>
                 <dd className="text-ink-muted">
                   {clinic.address}
                   <br />
                   <a
-                    className="mt-1 inline-block font-medium text-nexus-800 underline-offset-4 hover:underline"
+                    className="mt-2 inline-flex items-center gap-1 font-semibold text-brand-navy underline-offset-4 hover:underline"
                     href={clinic.mapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Ver no mapa ↗
+                    Abrir no Google Maps
+                    <span aria-hidden>↗</span>
                   </a>
                 </dd>
               </div>
               <div className="flex gap-4">
-                <dt className="w-28 shrink-0 font-semibold text-nexus-900">
-                  Telefone
-                </dt>
+                <dt className="w-28 shrink-0 font-semibold text-brand-navy">Telefone</dt>
                 <dd className="text-ink-muted">
                   <a
-                    className="font-semibold text-nexus-800 underline-offset-4 hover:underline"
+                    className="font-semibold text-brand-navy underline-offset-4 hover:underline"
                     href={clinic.phoneFixedHref}
                   >
                     {clinic.phoneFixed}
                   </a>
-                  <span className="mx-1.5 text-slate-300">|</span>
+                  <span className="mx-2 text-brand-navy/25">|</span>
                   <a
-                    className="font-semibold text-nexus-800 underline-offset-4 hover:underline"
+                    className="font-semibold text-brand-navy underline-offset-4 hover:underline"
                     href={clinic.whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -93,137 +84,156 @@ export default function Contact() {
                 </dd>
               </div>
               <div className="flex gap-4">
-                <dt className="w-28 shrink-0 font-semibold text-nexus-900">
-                  Instagram
-                </dt>
+                <dt className="w-28 shrink-0 font-semibold text-brand-navy">Instagram</dt>
                 <dd>
                   <a
-                    className="inline-flex items-center gap-1.5 font-semibold text-nexus-800 underline-offset-4 hover:underline"
+                    className="inline-flex items-center gap-1 font-semibold text-brand-navy underline-offset-4 hover:underline"
                     href={clinic.instagramUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     @{clinic.instagramHandle}
-                    <span className="text-slate-400" aria-hidden>
+                    <span className="text-brand-navy/40" aria-hidden>
                       ↗
                     </span>
                   </a>
-                <p className="mt-1 text-ink-muted">
-                  Novidades e contato pelo Direct.
-                </p>
+                  <p className="mt-1 text-ink-muted">Novidades e Direct.</p>
                 </dd>
               </div>
             </dl>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href={clinic.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-2xl bg-[#25D366] px-6 py-4 text-base font-semibold text-white shadow-lg transition hover:bg-[#20bd5a] sm:w-auto"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-brand-green px-6 py-4 text-base font-semibold text-brand-white shadow-md transition hover:bg-brand-green/92 sm:w-auto"
               >
-                WhatsApp
+                Falar no WhatsApp
                 <span aria-hidden>↗</span>
               </a>
               <a
                 href={clinic.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-purple-600 via-pink-600 to-orange-500 px-6 py-4 text-base font-semibold text-white shadow-lg transition hover:opacity-95 sm:w-auto"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-brand-navy/15 bg-brand-white px-6 py-4 text-base font-semibold text-brand-navy shadow-sm transition hover:border-brand-green/35 sm:w-auto"
               >
                 Instagram
                 <span aria-hidden>↗</span>
               </a>
             </div>
-          </div>
 
-          <div className="rounded-[1.75rem] border border-slate-200/80 bg-white p-6 shadow-xl shadow-slate-900/5 sm:p-8">
-            <form className="space-y-5" onSubmit={handleSubmit}>
-              <div className="grid gap-5 sm:grid-cols-2">
-                <label className="block sm:col-span-2">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    Nome completo
-                  </span>
-                  <input
-                    required
-                    name="name"
-                    type="text"
-                    autoComplete="name"
-                    className="mt-1.5 w-full rounded-xl border border-slate-200 bg-slate-50/80 px-4 py-3 text-sm text-ink outline-none ring-nexus-500/30 transition placeholder:text-slate-400 focus:border-nexus-500 focus:bg-white focus:ring-2"
-                    placeholder="Seu nome"
-                  />
-                </label>
-                <label className="block">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    E-mail
-                  </span>
-                  <input
-                    required
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    className="mt-1.5 w-full rounded-xl border border-slate-200 bg-slate-50/80 px-4 py-3 text-sm text-ink outline-none ring-nexus-500/30 transition placeholder:text-slate-400 focus:border-nexus-500 focus:bg-white focus:ring-2"
-                    placeholder="voce@email.com"
-                  />
-                </label>
-                <label className="block">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    Telefone
-                  </span>
-                  <input
-                    name="phone"
-                    type="tel"
-                    autoComplete="tel"
-                    className="mt-1.5 w-full rounded-xl border border-slate-200 bg-slate-50/80 px-4 py-3 text-sm text-ink outline-none ring-nexus-500/30 transition placeholder:text-slate-400 focus:border-nexus-500 focus:bg-white focus:ring-2"
-                    placeholder="(00) 00000-0000"
-                  />
-                </label>
-                <label className="block sm:col-span-2">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    Serviço de interesse
-                  </span>
-                  <select
-                    name="specialty"
-                    className="mt-1.5 w-full rounded-xl border border-slate-200 bg-slate-50/80 px-4 py-3 text-sm text-ink outline-none ring-nexus-500/30 transition focus:border-nexus-500 focus:bg-white focus:ring-2"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Selecione
-                    </option>
-                    {serviceTitles.map((t) => (
-                      <option key={t}>{t}</option>
-                    ))}
-                  </select>
-                </label>
-                <label className="block sm:col-span-2">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    Mensagem
-                  </span>
-                  <textarea
-                    name="message"
-                    rows={4}
-                    className="mt-1.5 w-full resize-y rounded-xl border border-slate-200 bg-slate-50/80 px-4 py-3 text-sm text-ink outline-none ring-nexus-500/30 transition placeholder:text-slate-400 focus:border-nexus-500 focus:bg-white focus:ring-2"
-                    placeholder="Melhor horário, convênio, dúvidas…"
-                  />
-                </label>
+            <div className="mt-10 overflow-hidden rounded-2xl border border-brand-navy/10 bg-brand-mist shadow-inner ring-1 ring-brand-navy/5">
+              <div className="relative aspect-[16/11] w-full bg-brand-mist sm:aspect-[16/10]">
+                <iframe
+                  title="Mapa — Clínica Nexus"
+                  src={mapsEmbedSrc}
+                  className="absolute inset-0 h-full w-full border-0 grayscale-[0.15] contrast-[0.97]"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
+              <p className="border-t border-brand-navy/8 px-4 py-3 text-center text-xs text-ink-muted">
+                Mapa interativo (Google Maps). Se não carregar, use o link “Abrir
+                no Google Maps”.
+              </p>
+            </div>
+          </Reveal>
 
-              {sent ? (
-                <p className="rounded-xl bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-800 ring-1 ring-emerald-200/80">
-                  Mensagem registrada apenas neste navegador (demonstração). Para
-                  falar com a clínica, use o WhatsApp ou ligue para{" "}
-                  {clinic.phoneFixed}.
-                </p>
-              ) : null}
+          <Reveal delay={0.06}>
+            <div className="rounded-[1.75rem] border border-brand-navy/10 bg-brand-white p-6 shadow-card sm:p-8">
+              <h3 className="font-display text-lg font-semibold text-brand-navy">
+                Envie uma mensagem (demonstração)
+              </h3>
+              <p className="mt-1 text-sm text-ink-muted">
+                Simulação local — não envia dados a servidores.
+              </p>
+              <form className="mt-6 space-y-5" onSubmit={handleSubmit}>
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <label className="block sm:col-span-2">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-brand-navy/55">
+                      Nome completo
+                    </span>
+                    <input
+                      required
+                      name="name"
+                      type="text"
+                      autoComplete="name"
+                      className="mt-1.5 w-full rounded-xl border border-brand-navy/12 bg-brand-mist/80 px-4 py-3 text-sm text-brand-navy outline-none ring-brand-green/25 transition placeholder:text-brand-navy/35 focus:border-brand-green/50 focus:bg-brand-white focus:ring-2"
+                      placeholder="Seu nome"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-brand-navy/55">
+                      E-mail
+                    </span>
+                    <input
+                      required
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      className="mt-1.5 w-full rounded-xl border border-brand-navy/12 bg-brand-mist/80 px-4 py-3 text-sm text-brand-navy outline-none ring-brand-green/25 transition placeholder:text-brand-navy/35 focus:border-brand-green/50 focus:bg-brand-white focus:ring-2"
+                      placeholder="voce@email.com"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-brand-navy/55">
+                      Telefone
+                    </span>
+                    <input
+                      name="phone"
+                      type="tel"
+                      autoComplete="tel"
+                      className="mt-1.5 w-full rounded-xl border border-brand-navy/12 bg-brand-mist/80 px-4 py-3 text-sm text-brand-navy outline-none ring-brand-green/25 transition placeholder:text-brand-navy/35 focus:border-brand-green/50 focus:bg-brand-white focus:ring-2"
+                      placeholder="(00) 00000-0000"
+                    />
+                  </label>
+                  <label className="block sm:col-span-2">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-brand-navy/55">
+                      Serviço de interesse
+                    </span>
+                    <select
+                      name="specialty"
+                      className="mt-1.5 w-full rounded-xl border border-brand-navy/12 bg-brand-mist/80 px-4 py-3 text-sm text-brand-navy outline-none ring-brand-green/25 transition focus:border-brand-green/50 focus:bg-brand-white focus:ring-2"
+                      defaultValue=""
+                    >
+                      <option value="" disabled>
+                        Selecione
+                      </option>
+                      {serviceTitles.map((t) => (
+                        <option key={t}>{t}</option>
+                      ))}
+                    </select>
+                  </label>
+                  <label className="block sm:col-span-2">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-brand-navy/55">
+                      Mensagem
+                    </span>
+                    <textarea
+                      name="message"
+                      rows={4}
+                      className="mt-1.5 w-full resize-y rounded-xl border border-brand-navy/12 bg-brand-mist/80 px-4 py-3 text-sm text-brand-navy outline-none ring-brand-green/25 transition placeholder:text-brand-navy/35 focus:border-brand-green/50 focus:bg-brand-white focus:ring-2"
+                      placeholder="Melhor horário, convênio, dúvidas…"
+                    />
+                  </label>
+                </div>
 
-              <button
-                type="submit"
-                className="w-full rounded-xl bg-nexus-900 py-3.5 text-sm font-semibold text-white shadow-lg shadow-nexus-900/20 transition hover:bg-nexus-800"
-              >
-                Enviar pedido de contato (demonstração)
-              </button>
-            </form>
-          </div>
+                {sent ? (
+                  <p className="rounded-xl border border-brand-green/25 bg-brand-mist px-4 py-3 text-sm font-medium text-brand-navy">
+                    Registrado apenas neste navegador (demonstração). Para falar
+                    com a clínica, use o WhatsApp ou ligue para {clinic.phoneFixed}.
+                  </p>
+                ) : null}
+
+                <button
+                  type="submit"
+                  className="w-full rounded-xl bg-brand-navy py-3.5 text-sm font-semibold text-brand-white shadow-md transition hover:bg-brand-navy/92"
+                >
+                  Enviar pedido de contato (demonstração)
+                </button>
+              </form>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

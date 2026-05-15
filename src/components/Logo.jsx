@@ -1,13 +1,10 @@
 import { clinic, logoUrl } from "../data/clinic.js";
 
-/**
- * Logo oficial (fundo preto no arquivo). `variant` ajusta altura no header/footer.
- */
 export default function Logo({ variant = "header" }) {
   const box =
     variant === "header"
-      ? "rounded-xl px-2 py-1.5 sm:px-2.5 sm:py-2"
-      : "rounded-xl px-2 py-1.5";
+      ? "rounded-2xl px-2.5 py-2 sm:px-3 sm:py-2.5"
+      : "rounded-2xl px-2.5 py-2";
   const img =
     variant === "header"
       ? "h-9 w-auto max-h-10 object-contain object-left sm:h-10 sm:max-h-11"
@@ -15,14 +12,14 @@ export default function Logo({ variant = "header" }) {
 
   return (
     <span
-      className={`inline-flex shrink-0 items-center justify-center bg-black shadow-md ring-1 ring-white/10 ${box}`}
+      className={`inline-flex shrink-0 items-center justify-center bg-brand-white shadow-card ring-1 ring-brand-navy/10 ${box}`}
     >
       <img
         src={logoUrl}
-        alt={`${clinic.name}: ${clinic.tagline}`}
+        alt={`${clinic.brandLine}`}
         className={img}
-        width={160}
-        height={56}
+        width={180}
+        height={60}
         decoding="async"
         fetchPriority={variant === "header" ? "high" : "auto"}
       />

@@ -1,21 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
 
-  --color-nexus-950: #042a28;
-  --color-nexus-900: #0d4f4c;
-  --color-nexus-800: #126b66;
-  --color-nexus-700: #1a857e;
-  --color-nexus-500: #2dd4bf;
-  --color-nexus-400: #5eead4;
-  --color-nexus-100: #ccfbf1;
-  --color-nexus-50: #f0fdfa;
+  --color-brand-navy: #0b2c66;
+  --color-brand-green: #66c23a;
+  --color-brand-white: #ffffff;
+  --color-brand-mist: #f7fafc;
 
-  --color-surface: #fafbfc;
-  --color-ink: #0f172a;
-  --color-ink-muted: #475569;
+  --color-ink: #0b2c66;
+  --color-ink-muted: rgb(11 44 102 / 0.72);
 }
 
 @layer base {
@@ -23,7 +18,7 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-white text-ink font-sans;
+    @apply bg-brand-white font-sans text-ink antialiased;
   }
 }
 
@@ -31,30 +26,52 @@
   text-wrap: balance;
 }
 
-/* Fundos por seção (clínicas premium: mesh suave, grade discreta, separação clara) */
-@utility bg-section-hero {
-  background-color: #f5faf9;
+/* Fundos suaves (paleta exclusiva + gradientes discretos) */
+@utility bg-page-mist {
+  background-color: var(--color-brand-mist);
   background-image:
-    radial-gradient(ellipse 110% 70% at 50% -20%, rgb(94 234 212 / 0.2), transparent 58%),
-    radial-gradient(ellipse 75% 55% at 105% 5%, rgb(125 211 252 / 0.14), transparent 52%),
-    radial-gradient(ellipse 50% 45% at -10% 70%, rgb(13 79 76 / 0.05), transparent 50%);
+    radial-gradient(ellipse 100% 80% at 10% -30%, rgb(102 194 58 / 0.08), transparent 55%),
+    radial-gradient(ellipse 90% 60% at 100% 0%, rgb(11 44 102 / 0.06), transparent 50%);
 }
 
-@utility bg-section-services {
-  background-color: #f3f8f7;
-  background-image: radial-gradient(
-    circle at 1px 1px,
-    rgb(13 79 76 / 0.055) 1px,
-    transparent 0
-  );
-  background-size: 22px 22px;
-}
-
-@utility bg-section-contact {
-  background: linear-gradient(
+@utility bg-section-soft {
+  background-color: var(--color-brand-white);
+  background-image: linear-gradient(
     180deg,
     rgb(255 255 255) 0%,
-    rgb(240 253 250) 38%,
-    rgb(248 250 252) 100%
+    rgb(247 250 252) 55%,
+    rgb(255 255 255) 100%
   );
+}
+
+@utility bg-gradient-brand {
+  background-image: linear-gradient(
+    135deg,
+    rgb(11 44 102) 0%,
+    rgb(11 44 102 / 0.92) 42%,
+    rgb(102 194 58 / 0.35) 100%
+  );
+}
+
+@utility bg-gradient-hero-overlay {
+  background-image: linear-gradient(
+    105deg,
+    rgb(255 255 255 / 0.97) 0%,
+    rgb(247 250 252 / 0.88) 38%,
+    rgb(255 255 255 / 0.35) 72%,
+    rgb(255 255 255 / 0.1) 100%
+  );
+}
+
+@utility shadow-card {
+  box-shadow:
+    0 1px 2px rgb(11 44 102 / 0.04),
+    0 12px 32px rgb(11 44 102 / 0.06);
+}
+
+@utility shadow-card-hover {
+  box-shadow:
+    0 2px 4px rgb(11 44 102 / 0.06),
+    0 20px 40px rgb(11 44 102 / 0.1),
+    0 0 0 1px rgb(102 194 58 / 0.12);
 }
