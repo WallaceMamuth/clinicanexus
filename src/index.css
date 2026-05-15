@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+
+  --color-nexus-950: #042a28;
+  --color-nexus-900: #0d4f4c;
+  --color-nexus-800: #126b66;
+  --color-nexus-700: #1a857e;
+  --color-nexus-500: #2dd4bf;
+  --color-nexus-400: #5eead4;
+  --color-nexus-100: #ccfbf1;
+  --color-nexus-50: #f0fdfa;
+
+  --color-surface: #fafbfc;
+  --color-ink: #0f172a;
+  --color-ink-muted: #475569;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-ink font-sans;
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
