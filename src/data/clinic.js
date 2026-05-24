@@ -6,8 +6,8 @@ export const clinic = {
   name: "W.A.Techevoce Clínica",
   brandLine: "W.A.Techevoce Clínica",
   tagline: "Saúde e Bem-Estar",
-  instagramHandle: "clinicanexusdv",
-  instagramUrl: "https://www.instagram.com/clinicanexusdv/",
+  instagramHandle: "watechevoce",
+  instagramUrl: "https://www.instagram.com/watechevoce/",
   address: "Saquarema, Jaconé Centro",
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Saquarema%2C+Jacon%C3%A9+Centro%2C+RJ",
