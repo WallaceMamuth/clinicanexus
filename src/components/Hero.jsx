@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -34,10 +35,7 @@ export default function Hero() {
   const current = slides[active] ?? slides[0];
 
   return (
-    <section
-      id="inicio"
-      className="hero-viewport relative overflow-hidden bg-brand-navy"
-    >
+    <section className="hero-viewport relative overflow-hidden bg-brand-navy">
       <Swiper
         className="hero-swiper absolute inset-0 h-full min-h-full w-full touch-pan-y"
         modules={[Autoplay, EffectFade]}
@@ -141,13 +139,13 @@ export default function Hero() {
                 transition={{ duration: 0.52, delay: 0.22, ease: easeOut }}
                 className="mt-7 flex w-full min-w-0 flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap"
               >
-                <a
-                  href="#contato"
+                <Link
+                  to="/contato"
                   className="inline-flex min-h-[48px] w-full min-w-0 flex-1 items-center justify-center gap-2 rounded-2xl bg-brand-green px-5 py-3.5 text-center text-base font-semibold text-brand-white shadow-lg shadow-black/25 transition hover:bg-brand-green/92 hover:shadow-xl sm:w-auto sm:flex-initial sm:px-7"
                 >
                   Agendar consulta
                   <ArrowUpRight className="h-4 w-4 shrink-0 opacity-95" aria-hidden />
-                </a>
+                </Link>
                 <a
                   href={clinic.whatsappUrl}
                   target="_blank"

@@ -1,36 +1,32 @@
 import { Quote, Star } from "lucide-react";
 import { clinic } from "../data/clinic.js";
 import Reveal from "./Reveal.jsx";
+import SectionHeader from "./SectionHeader.jsx";
 
 export default function Testimonials() {
   return (
-    <section
-      id="depoimentos"
-      className="section-y relative border-t border-brand-navy/8 bg-brand-white"
-    >
+    <section className="section-y relative border-t border-brand-navy/8 bg-page-mist">
       <div className="container-site relative">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-green">
-            Depoimentos
-          </p>
-          <h2 className="text-fluid-section-title mt-3 font-display font-semibold tracking-tight text-brand-navy text-balance">
-            A opinião de quem já passou pela Nexus
-          </h2>
-          <p className="text-fluid-lead mt-4 text-ink-muted">
-            Histórias reais de acolhimento e confiança, pilares do nosso
-            atendimento.
-          </p>
-        </Reveal>
+        <SectionHeader
+          eyebrow="Depoimentos"
+          title="A opinião de quem já passou pela clínica"
+          description="Histórias reais de acolhimento e confiança, pilares do nosso atendimento."
+          align="center"
+          className="mb-12 sm:mb-14"
+        />
 
-        <ul className="mt-12 grid min-w-0 gap-4 sm:mt-14 md:grid-cols-2 md:gap-5 lg:grid-cols-3">
+        <ul className="grid min-w-0 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3">
           {clinic.testimonials.map((t, i) => (
             <Reveal key={t.name} delay={i * 0.06}>
-              <li className="relative flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-brand-navy/8 bg-brand-mist/60 p-5 shadow-card transition hover:-translate-y-0.5 hover:shadow-card-hover sm:p-6">
+              <li className="relative flex h-full min-w-0 flex-col overflow-hidden rounded-[1.25rem] border border-brand-navy/8 bg-brand-white p-6 shadow-card transition duration-300 hover:-translate-y-0.5 hover:shadow-card-hover">
                 <Quote
-                  className="absolute right-5 top-5 h-10 w-10 text-brand-green/25"
+                  className="absolute right-5 top-5 h-10 w-10 text-brand-green/20"
                   aria-hidden
                 />
-                <div className="flex gap-1 text-brand-green" aria-label={`${t.rating} de 5 estrelas`}>
+                <div
+                  className="flex gap-1 text-brand-green"
+                  aria-label={`${t.rating} de 5 estrelas`}
+                >
                   {Array.from({ length: t.rating }).map((_, j) => (
                     <Star key={j} className="h-4 w-4 fill-current" aria-hidden />
                   ))}

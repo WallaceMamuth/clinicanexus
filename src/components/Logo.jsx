@@ -2,34 +2,50 @@ import { clinic, logoUrl } from "../data/clinic.js";
 
 /**
  * @param {"header" | "footer"} variant
- * @param {"light" | "dark"} tone. "light": sobre hero escuro (vidro claro + sombra no logo).
+ * @param {"light" | "dark"} tone. "light": sobre hero escuro.
  */
 export default function Logo({ variant = "header", tone = "dark" }) {
   const light = tone === "light";
+  const isFooter = variant === "footer";
 
   const box = light
-    ? "rounded-2xl px-1 py-0.5 ring-1 ring-white/40 bg-white/12 backdrop-blur-md shadow-[0_4px_24px_rgb(0_0_0_0.2)]"
-    : variant === "header"
-      ? "rounded-2xl px-1.5 py-0.5 ring-1 ring-brand-navy/10 bg-brand-white shadow-card"
-      : "rounded-2xl px-3 py-2 ring-1 ring-brand-navy/10 bg-brand-white shadow-card";
+    ? "rounded-2xl px-2.5 py-1.5 ring-1 ring-white/35 bg-white/12 backdrop-blur-md shadow-[0_4px_24px_rgb(0_0_0_0.2)]"
+    : "rounded-2xl px-2.5 py-1.5 ring-1 ring-brand-navy/10 bg-brand-white shadow-card";
 
-  const img = light
-    ? "h-[50px] w-auto max-h-[50px] max-w-[4.5rem] object-contain object-left sm:h-[54px] sm:max-h-[54px] sm:max-w-[5.5rem] drop-shadow-[0_2px_14px_rgb(0_0_0_0.45)]"
-    : variant === "header"
-      ? "h-[48px] w-auto max-h-[48px] max-w-[4.25rem] object-contain object-left sm:h-[52px] sm:max-h-[52px] sm:max-w-[5rem]"
-      : "h-[5.5rem] w-auto max-h-[5.5rem] max-w-[min(100%,12rem)] object-contain object-center sm:h-24 sm:max-h-24 sm:max-w-[14rem] md:h-28 md:max-h-28 md:max-w-[16rem]";
+  const markSize = isFooter ? "h-12 w-12 sm:h-14 sm:w-14" : "h-10 w-10 sm:h-11 sm:w-11";
+  const titleSize = isFooter
+    ? "text-base sm:text-lg"
+    : "text-[0.9rem] sm:text-base";
+  const subtitleSize = isFooter ? "text-xs sm:text-sm" : "text-[0.65rem] sm:text-xs";
+
+  const titleClass = light ? "text-white" : "text-brand-navy";
+  const subtitleClass = light ? "text-brand-green" : "text-brand-green";
 
   return (
-    <span className={`inline-flex shrink-0 items-center justify-center ${box}`}>
+    <span className={`inline-flex min-w-0 max-w-full items-center gap-2.5 sm:gap-3 ${box}`}>
       <img
         src={logoUrl}
-        alt={clinic.brandLine}
-        className={img}
-        width={1024}
-        height={1536}
+        alt=""
+        aria-hidden
+        className={`${markSize} shrink-0 object-contain`}
+        width={48}
+        height={48}
         decoding="async"
         fetchPriority={variant === "header" ? "high" : "auto"}
       />
+      <span className="flex min-w-0 flex-col leading-tight">
+        <span
+          className={`truncate font-display font-semibold tracking-tight ${titleSize} ${titleClass}`}
+        >
+          W.A.Techevoce
+        </span>
+        <span
+          className={`truncate font-semibold uppercase tracking-[0.14em] ${subtitleSize} ${subtitleClass}`}
+        >
+          Clínica
+        </span>
+      </span>
+      <span className="sr-only">{clinic.brandLine}</span>
     </span>
   );
 }

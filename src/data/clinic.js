@@ -3,19 +3,20 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`;
 
 /** Dados institucionais: edite aqui quando precisar. */
 export const clinic = {
-  name: "Clínica Nexus",
-  brandLine: "Clínica Nexus Saúde e Bem-Estar",
+  name: "W.A.Techevoce Clínica",
+  brandLine: "W.A.Techevoce Clínica",
   tagline: "Saúde e Bem-Estar",
   instagramHandle: "clinicanexusdv",
   instagramUrl: "https://www.instagram.com/clinicanexusdv/",
-  address:
-    "Av. México, 1101 - Sagrada Família, Dois Vizinhos - PR",
+  address: "Saquarema, Jaconé Centro",
   mapsUrl:
-    "https://www.google.com/maps/search/?api=1&query=Av.+M%C3%A9xico%2C+1101%2C+Sagrada+Fam%C3%ADlia%2C+Dois+Vizinhos+-+PR",
-  phoneFixed: "(46) 3536-9555",
-  phoneFixedHref: "tel:+554635369555",
-  phoneWhatsapp: "(46) 99902-7576",
-  whatsappDigits: "5546999027576",
+    "https://www.google.com/maps/search/?api=1&query=Saquarema%2C+Jacon%C3%A9+Centro%2C+RJ",
+  phoneFixed: "(22) 99974-1139",
+  phoneFixedHref: "tel:+5522999741139",
+  phoneWhatsapp: "(22) 99974-1139",
+  whatsappDigits: "5522999741139",
+  email: "contato@watechevoce.com.br",
+  emailHref: "mailto:contato@watechevoce.com.br",
   get whatsappUrl() {
     const text = encodeURIComponent(
       `Olá! Vim pelo site da ${this.brandLine} e gostaria de agendar uma consulta.`
@@ -52,7 +53,7 @@ export const clinic = {
     eyebrow: "Nossa história",
     title: "Um espaço onde ciência e humanização caminham juntas",
     paragraphs: [
-      "A Clínica Nexus nasceu da vontade de reunir, em um só endereço, o que há de melhor em cuidado clínico, estética, movimento e saúde mental, com olhar atento às suas necessidades reais.",
+      "A W.A.Techevoce Clínica nasceu da vontade de reunir, em um só endereço, o que há de melhor em cuidado clínico, estética, movimento e saúde mental, com olhar atento às suas necessidades reais.",
       "Acreditamos que saúde de verdade combina tecnologia, protocolos seguros e um atendimento próximo. Por isso investimos em profissionais qualificados, salas acolhedoras e uma jornada simples, do primeiro contato ao pós-consulta.",
     ],
   },
@@ -170,5 +171,5 @@ export const clinic = {
 
 export const serviceTitles = clinic.services.map((s) => s.title);
 
-/** Marca com fundo transparente (`public/logofundoremovido.png`). */
-export const logoUrl = `${import.meta.env.BASE_URL}logofundoremovido.png`;
+/** Marca SVG (`public/logo.svg`). */
+export const logoUrl = `${import.meta.env.BASE_URL}logo.svg`;

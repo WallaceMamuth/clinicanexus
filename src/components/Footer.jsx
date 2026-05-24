@@ -1,5 +1,7 @@
-import { MapPin, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
+import { MapPin, Mail, Phone } from "lucide-react";
 import { clinic } from "../data/clinic.js";
+import { siteRoutes } from "../data/routes.js";
 import Logo from "./Logo.jsx";
 
 function InstagramIcon({ className }) {
@@ -10,23 +12,10 @@ function InstagramIcon({ className }) {
   );
 }
 
-const footerNav = [
-  { label: "Início", href: "#inicio" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Serviços", href: "#servicos" },
-  { label: "Benefícios", href: "#beneficios" },
-  { label: "Equipe", href: "#equipe" },
-  { label: "Depoimentos", href: "#depoimentos" },
-  { label: "Contato", href: "#contato" },
-];
-
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer
-      id="site-footer"
-      className="border-t border-brand-navy/10 bg-brand-white py-12 sm:py-14"
-    >
+    <footer className="border-t border-brand-navy/10 bg-brand-white py-12 sm:py-14">
       <div className="container-site flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
         <div className="flex min-w-0 max-w-md flex-col gap-4">
           <Logo variant="footer" />
@@ -58,18 +47,23 @@ export default function Footer() {
               WhatsApp {clinic.phoneWhatsapp}
             </a>
           </p>
+          <p className="text-sm text-ink-muted">
+            <a
+              className="inline-flex items-center gap-1.5 font-medium text-brand-navy hover:underline"
+              href={clinic.emailHref}
+            >
+              <Mail className="h-4 w-4 text-brand-green" aria-hidden />
+              {clinic.email}
+            </a>
+          </p>
         </div>
 
         <div className="flex min-w-0 flex-col gap-6 sm:flex-row sm:items-start sm:gap-12 lg:gap-16">
-          <nav className="flex flex-col gap-2 text-sm font-medium text-ink-muted">
-            {footerNav.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="transition hover:text-brand-navy"
-              >
-                {l.label}
-              </a>
+          <nav className="flex flex-col gap-2 text-sm font-medium text-ink-muted" aria-label="Rodapé">
+            {siteRoutes.map((item) => (
+              <Link key={item.path} to={item.path} className="transition hover:text-brand-navy">
+                {item.label}
+              </Link>
             ))}
           </nav>
           <div className="flex flex-col gap-3">

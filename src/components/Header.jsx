@@ -1,18 +1,12 @@
 import { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { clinic } from "../data/clinic.js";
+import { siteRoutes } from "../data/routes.js";
 import Logo from "./Logo.jsx";
 
-const nav = [
-  { label: "Início", href: "#inicio" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Serviços", href: "#servicos" },
-  { label: "Benefícios", href: "#beneficios" },
-  { label: "Equipe", href: "#equipe" },
-  { label: "Depoimentos", href: "#depoimentos" },
-  { label: "Contato", href: "#contato" },
-];
-
 export default function Header() {
+  const { pathname } = useLocation();
+  const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [vh, setVh] = useState(800);
@@ -33,18 +27,19 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [open]);
 
-  /** Ainda sobre o hero fullscreen (conteúdo claro sobre imagem). */
-  const onHero = scrollY < vh * 0.88;
-  /** Barra elevada: blur / vidro após pequeno scroll. */
-  const elevated = scrollY > 12;
-  /** Logo + links: claro sobre o carrossel, escuro após sair do hero ou com barra sólida. */
-  const lightNav = !elevated || (elevated && onHero);
+  const onHero = isHome && scrollY < vh * 0.88;
+  const elevated = !isHome || scrollY > 12;
+  const lightNav = isHome && (!elevated || (elevated && onHero));
 
   const shell =
     elevated && onHero
@@ -58,26 +53,36 @@ export default function Header() {
   const linkClass = lightNav
     ? `${linkBase} text-white/92 hover:bg-white/12 hover:text-white`
     : `${linkBase} text-brand-navy/80 hover:bg-brand-mist hover:text-brand-navy`;
+  const activeLinkClass = lightNav
+    ? `${linkBase} bg-white/15 text-white`
+    : `${linkBase} bg-brand-mist text-brand-navy`;
 
   const menuBtn = lightNav
     ? "border-white/35 bg-white/12 text-white shadow-[inset_0_1px_0_rgb(255_255_255_0.12)] backdrop-blur-md hover:bg-white/18"
     : "border-brand-navy/12 bg-brand-white text-brand-navy shadow-sm hover:bg-brand-mist";
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] transition-[background,box-shadow,backdrop-filter,border-color] duration-500 ease-out ${shell}`}>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] transition-[background,box-shadow,backdrop-filter,border-color] duration-500 ease-out ${shell}`}
+    >
       <div className="container-site flex h-16 min-w-0 items-center justify-between gap-2 sm:gap-3">
-        <a
-          href="#inicio"
-          className="group flex min-w-0 max-w-[46%] items-center rounded-2xl outline-none ring-white/0 focus-visible:ring-2 focus-visible:ring-brand-green sm:max-w-none"
+        <Link
+          to="/"
+          className="group flex min-w-0 max-w-[58%] items-center rounded-2xl outline-none ring-white/0 focus-visible:ring-2 focus-visible:ring-brand-green sm:max-w-none"
         >
           <Logo variant="header" tone={lightNav ? "light" : "dark"} />
-        </a>
+        </Link>
 
-        <nav className="hidden items-center gap-0.5 lg:flex xl:gap-1">
-          {nav.map((item) => (
-            <a key={item.href} href={item.href} className={linkClass}>
+        <nav className="hidden items-center gap-0.5 lg:flex xl:gap-1" aria-label="Principal">
+          {siteRoutes.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              end={item.end}
+              className={({ isActive }) => (isActive ? activeLinkClass : linkClass)}
+            >
               {item.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
@@ -124,16 +129,26 @@ export default function Header() {
         }`}
         aria-hidden={!open}
       >
-        <nav className="container-site flex max-h-[min(100dvh-4rem,32rem)] min-w-0 flex-col gap-0.5 overflow-y-auto overscroll-y-contain py-3 pb-[max(1rem,env(safe-area-inset-bottom))]">
-          {nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="flex min-h-[48px] items-center rounded-xl px-4 py-2 text-base font-medium text-brand-navy/85 hover:bg-brand-mist active:bg-brand-mist/80"
+        <nav
+          className="container-site flex max-h-[min(100dvh-4rem,32rem)] min-w-0 flex-col gap-0.5 overflow-y-auto overscroll-y-contain py-3 pb-[max(1rem,env(safe-area-inset-bottom))]"
+          aria-label="Principal"
+        >
+          {siteRoutes.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              end={item.end}
+              className={({ isActive }) =>
+                `flex min-h-[48px] items-center rounded-xl px-4 py-2 text-base font-medium transition active:bg-brand-mist/80 ${
+                  isActive
+                    ? "bg-brand-mist text-brand-navy"
+                    : "text-brand-navy/85 hover:bg-brand-mist"
+                }`
+              }
               onClick={() => setOpen(false)}
             >
               {item.label}
-            </a>
+            </NavLink>
           ))}
           <a
             href={clinic.instagramUrl}

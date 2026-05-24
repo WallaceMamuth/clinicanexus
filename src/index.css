@@ -138,3 +138,23 @@
     0 20px 40px rgb(11 44 102 / 0.1),
     0 0 0 1px rgb(102 194 58 / 0.12);
 }
+
+@utility section-eyebrow {
+  @apply inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.2em] text-brand-green;
+}
+
+@utility section-eyebrow-line {
+  @apply h-px w-8 bg-brand-green/60 sm:w-10;
+}
+
+@utility btn-primary {
+  @apply rounded-2xl bg-brand-green px-6 py-3.5 text-base font-semibold text-brand-white shadow-md transition hover:bg-brand-green/92 hover:shadow-lg;
+}
+
+@utility btn-secondary {
+  @apply rounded-2xl border border-brand-navy/15 bg-brand-white px-6 py-3.5 text-base font-semibold text-brand-navy shadow-sm transition hover:border-brand-green/35 hover:bg-brand-mist;
+}
+
+@utility btn-navy {
+  @apply rounded-2xl bg-brand-navy px-6 py-3.5 text-base font-semibold text-brand-white shadow-md transition hover:bg-brand-navy/92;
+}

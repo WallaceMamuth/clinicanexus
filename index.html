@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <!-- Ícones: caminhos relativos para funcionar com base do Vite (ex.: GitHub Pages /repo/). -->
-    <link rel="icon" type="image/png" href="logo.png" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" sizes="any" />
+    <link rel="icon" type="image/png" href="logo.png" />
     <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
     <meta name="theme-color" content="#0B2C66" />
@@ -14,11 +14,11 @@
     />
     <meta
       name="description"
-      content="Clínica Nexus Saúde e Bem-Estar: medicina integrada, acolhimento e excelência. Dois Vizinhos, PR."
+      content="W.A.Techevoce Clínica: medicina integrada, acolhimento e excelência. Saquarema, RJ."
     />
     <meta
       name="application-name"
-      content="Clínica Nexus Saúde e Bem-Estar"
+      content="W.A.Techevoce Clínica"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,7 +26,26 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..700&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <title>Clínica Nexus Saúde e Bem-Estar</title>
+    <title>W.A.Techevoce Clínica</title>
+    <!-- GitHub Pages: restaura rotas do React Router após redirect do 404.html -->
+    <script>
+      (function (location) {
+        if (location.search[1] === "/") {
+          var decoded = location.search
+            .slice(1)
+            .split("&")
+            .map(function (segment) {
+              return segment.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(
+            null,
+            null,
+            location.pathname.slice(0, -1) + decoded + location.hash
+          );
+        }
+      })(window.location);
+    </script>
   </head>
   <body class="antialiased">
     <div id="root"></div>
